@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CMRL Metro Information Portal</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin:0;
+            background:#f4f4f4;
+        }
+
+        header{
+            background:#003366;
+            color:white;
+            text-align:center;
+            padding:20px;
+        }
+
+        nav{
+            background:#00509e;
+            text-align:center;
+            padding:10px;
+        }
+
+        nav a{
+            color:white;
+            text-decoration:none;
+            margin:15px;
+            font-weight:bold;
+        }
+
+        section{
+            padding:20px;
+        }
+
+        .card{
+            background:white;
+            padding:20px;
+            margin:15px;
+            border-radius:10px;
+            box-shadow:0 0 10px gray;
+        }
+
+        button{
+            background:#003366;
+            color:white;
+            border:none;
+            padding:10px 20px;
+            cursor:pointer;
+            border-radius:5px;
+        }
+
+        footer{
+            background:#003366;
+            color:white;
+            text-align:center;
+            padding:15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>CMRL Metro Information Portal</h1>
+    <p>Interactive Website for Chennai Metro Rail</p>
+</header>
+
+<nav>
+    <a href="#about">About</a>
+    <a href="#lines">Metro Lines</a>
+    <a href="#ticket">Ticket Fare</a>
+</nav>
+
+<section id="about">
+    <div class="card">
+        <h2>About CMRL</h2>
+        <p>
+            Chennai Metro Rail is a rapid transit system serving Chennai city.
+            It provides fast, safe and comfortable transportation.
+        </p>
+    </div>
+</section>
+
+<section id="lines">
+    <div class="card">
+        <h2>Metro Lines</h2>
+
+        <ul>
+            <li>Blue Line</li>
+            <li>Green Line</li>
+        </ul>
+
+        <button onclick="showLine()">
+            Show Metro Information
+        </button>
+
+        <p id="lineinfo"></p>
+
+    </div>
+</section>
+
+<section id="ticket">
+    <div class="card">
+
+        <h2>Ticket Fare Calculator</h2>
+
+        <input type="number" id="distance"
+        placeholder="Enter Distance in KM">
+
+        <br><br>
+
+        <button onclick="calculateFare()">
+            Calculate Fare
+        </button>
+
+        <h3 id="fare"></h3>
+
+    </div>
+</section>
+
+<footer>
+    Internship Project - CMRL Website
+</footer>
+
+<script>
+
+function showLine(){
+    document.getElementById("lineinfo").innerHTML =
+    "Blue Line: Wimco Nagar Depot to Airport | Green Line: Chennai Central to St. Thomas Mount";
+}
+
+function calculateFare(){
+
+    let distance =
+    document.getElementById("distance").value;
+
+    let fare = distance * 5;
+
+    document.getElementById("fare").innerHTML =
+    "Estimated Fare: ₹" + fare;
+
+}
+
+</script>
+
+</body>
+</html>
