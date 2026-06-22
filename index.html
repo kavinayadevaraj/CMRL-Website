@@ -57,6 +57,17 @@
             text-align:center;
             padding:15px;
         }
+
+.dark{
+    background:#111;
+    color:white;
+}
+
+.dark .card{
+    background:#222;
+    color:white;
+}
+
     </style>
 </head>
 
@@ -65,12 +76,21 @@
 <header>
     <h1>CMRL Metro Information Portal</h1>
     <p>Interactive Website for Chennai Metro Rail</p>
+    <h3 id="clock"></h3>
 </header>
 
 <nav>
     <a href="#about">About</a>
     <a href="#lines">Metro Lines</a>
+    <a href="#search">Station Search</a>
+    <a href="#timings">Metro Timings</a>
+    <a href="#feedback">Feedback</a>
+    <a href="#farechart">Fare Chart</a>
     <a href="#ticket">Ticket Fare</a>
+
+    <button onclick="darkMode()">
+        🌙 Dark Mode
+    </button>
 </nav>
 
 <section id="about">
@@ -98,10 +118,123 @@
 
         <p id="lineinfo"></p>
 
-    </div>
+</div>
+
+</section>
+
+<section id="search">
+
+<div class="card">
+
+<h2>Station Search</h2>
+
+<input type="text"
+id="station"
+placeholder="Enter Station Name">
+
+<button onclick="searchStation()">
+Search
+</button>
+
+<p id="result"></p>
+
+</div>
+
+</section>
+
+<section id="timings">
+
+<div class="card">
+
+<h2>Metro Timings</h2>
+
+<ul>
+    <li>First Train: 5:00 AM</li>
+    <li>Last Train: 11:00 PM</li>
+    <li>Peak Hours: 8:00 AM - 10:00 AM</li>
+    <li>Evening Peak Hours: 5:00 PM - 8:00 PM</li>
+</ul>
+
+</div>
+
+</section>
+
+<section id="feedback">
+
+<div class="card">
+
+<h2>Feedback Form</h2>
+
+<input type="text"
+id="name"
+placeholder="Enter Your Name">
+
+<br><br>
+
+<input type="email"
+id="email"
+placeholder="Enter Your Email">
+
+<br><br>
+
+<textarea
+id="message"
+placeholder="Enter Your Feedback">
+</textarea>
+
+<br><br>
+
+<button onclick="submitFeedback()">
+Submit
+</button>
+
+<p id="feedbackResult"></p>
+
+</div>
+
+</section>
+
+<section id="farechart">
+
+<div class="card">
+
+<h2>Metro Fare Chart</h2>
+
+<table border="1" cellpadding="10">
+
+<tr>
+<th>Distance (KM)</th>
+<th>Fare (₹)</th>
+</tr>
+
+<tr>
+<td>0 - 2</td>
+<td>10</td>
+</tr>
+
+<tr>
+<td>2 - 5</td>
+<td>20</td>
+</tr>
+
+<tr>
+<td>5 - 10</td>
+<td>30</td>
+</tr>
+
+<tr>
+<td>10 - 20</td>
+<td>50</td>
+</tr>
+
+</table>
+
+</div>
+
 </section>
 
 <section id="ticket">
+
     <div class="card">
 
         <h2>Ticket Fare Calculator</h2>
@@ -126,6 +259,11 @@
 
 <script>
 
+setInterval(function(){
+    document.getElementById("clock").innerHTML =
+    new Date().toLocaleTimeString();
+},1000);
+
 function showLine(){
     document.getElementById("lineinfo").innerHTML =
     "Blue Line: Wimco Nagar Depot to Airport | Green Line: Chennai Central to St. Thomas Mount";
@@ -140,7 +278,28 @@ function calculateFare(){
 
     document.getElementById("fare").innerHTML =
     "Estimated Fare: ₹" + fare;
+}
 
+function darkMode(){
+    document.body.classList.toggle("dark");
+}
+
+function searchStation(){
+
+    let station =
+    document.getElementById("station").value;
+
+    document.getElementById("result").innerHTML =
+    "Station Found: " + station;
+}
+
+function submitFeedback(){
+
+    let name =
+    document.getElementById("name").value;
+
+    document.getElementById("feedbackResult").innerHTML =
+    "Thank you for your feedback, " + name + "!";
 }
 
 </script>
