@@ -39,8 +39,14 @@
             padding:20px;
             margin:15px;
             border-radius:10px;
+            transition: 0.3s;
             box-shadow:0 0 10px gray;
+       
         }
+
+        .card:hover{
+    transform:scale(1.03);
+}
 
         button{
             background:#003366;
@@ -74,9 +80,10 @@
 <body>
 
 <header>
-    <h1>CMRL Metro Information Portal</h1>
+    <h1>🚇 CMRL Metro Information Portal</h1>
     <p>Interactive Website for Chennai Metro Rail</p>
     <h3 id="clock"></h3>
+    <p>Smart • Safe • Sustainable Transport</p>
 </header>
 
 <nav>
@@ -85,6 +92,7 @@
     <a href="#search">Station Search</a>
     <a href="#timings">Metro Timings</a>
     <a href="#feedback">Feedback</a>
+    <a href="#status">Service Status</a>
     <a href="#farechart">Fare Chart</a>
     <a href="#ticket">Ticket Fare</a>
 
@@ -233,6 +241,22 @@ Submit
 
 </section>
 
+<section id="status">
+
+<div class="card">
+
+<h2>Metro Service Status</h2>
+
+<button onclick="checkStatus()">
+Check Service Status
+</button>
+
+<p id="statusResult"></p>
+
+</div>
+
+</section>
+
 <section id="ticket">
 
     <div class="card">
@@ -300,6 +324,12 @@ function submitFeedback(){
 
     document.getElementById("feedbackResult").innerHTML =
     "Thank you for your feedback, " + name + "!";
+}
+
+function checkStatus(){
+
+    document.getElementById("statusResult").innerHTML =
+    "🟢 All Metro Services are Operating Normally";
 }
 
 </script>
